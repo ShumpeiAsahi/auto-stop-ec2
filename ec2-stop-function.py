@@ -1,6 +1,6 @@
 import boto3 , requests
 
-def lambda_handler(event, context):
+def lamda_handler(event, context):
 
     res = requests.get('http://s-proj.com/utils/checkHoliday.php?kind=h') #祝日かどうかをAPIで判定
     today = res.text #レスポンスボディをテキスト形式で取得
