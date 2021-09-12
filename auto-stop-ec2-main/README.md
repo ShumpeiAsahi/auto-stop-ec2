@@ -1,1 +1,0 @@
-# auto-stop-ec2
