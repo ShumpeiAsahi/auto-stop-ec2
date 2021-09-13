@@ -8,15 +8,15 @@ def lambda_handler(event, context):
     region = event['Region']
     instances = event['Instances']
 
-    ec2 = boto3.client('ec2', region_name=region)
+    rds = boto3.client('rds', region_name=region)
 
     if today != 'holiday':
         if event['Action'] == 'start':
-            ec2.start_instances(InstanceIds=instances)
-            print ('started your instances: ' + ", ".join(instances))
+            rds.start_db_instance(DBInstanceIdentifier=instances)
+            print ('started your DBinstances: ' + ", ".join(instances))
         elif event['Action'] == 'stop':
-            ec2.stop_instances(InstanceIds=instances)
-            print ('stopped your instances: ' + ", ".join(instances))
+            rds.stop_db_instance(DBInstanceIdentifier=instances)
+            print ('stopped your DBinstances: ' + ", ".join(instances))
         else :
             print ('not found event')
     else:
